@@ -1,14 +1,21 @@
-var i = 10;
-
 function setup(){
 	createCanvas(windowWidth, windowHeight);
 
-	player = new Player(200, 400);
-	boundary = new Boundary(400, 300, 400, 500);
+	player = new Player();
+	boundary = new Array(5);
+	for(var i = 0; i < 5; i++){
+		boundary[i] = new Boundary(random(800), random(800), random(800), random(800));
+	}
 }
 
 function draw(){
 	background(50);
 	player.show();
-	boundary.show();
+
+	for(var i = 0; i < 5; i++){
+		boundary[i].show();
+	}
+
+	player.setDirection(mouseX, mouseY);
+	player.look(boundary[i]);
 }

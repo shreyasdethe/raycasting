@@ -13,22 +13,25 @@ function draw(){
 	background(50);
 	stroke(255);
 	line(width/2, 0, width/2, height);
-	player.show();
-	player.setDirection(mouseX, mouseY);
+	// player.setDirection(mouseX, mouseY);
 
 	for(var i = 0; i < boundary.length; i++){
 		boundary[i].show();
 	}
 	player.look(boundary);
-	player.setDirection(mouseX, mouseY);
 
-	// if (keyIsDown(DOWN_ARROW)) player.rotate(20);
-	// else if (keyIsDown(UP_ARROW)) player.rotate(-20);
+
+	if(keyIsDown(UP_ARROW)) player.move(5);
+	else if(keyIsDown(DOWN_ARROW)) player.move(-5);
+	else if(keyIsDown(LEFT_ARROW)) player.rotate(-0.05);
+	else if(keyIsDown(RIGHT_ARROW)) player.rotate(0.05);
+ 	
+	player.show();
 
 }
 
-function keyPressed(){
-	if (keyCode == UP_ARROW) player.rotate(-1);
-	else if (keyCode == DOWN_ARROW) player.rotate(1);
-	// return false;
-}
+// function keyPressed(){
+// 	if(keyCode == UP_ARROW) player.pos.y -= 5;
+// 	else if(keyCode == DOWN_ARROW) player.pos.y += 5;
+// 	else if(keyCode == RIGHT_ARROW) player.rotate(0.01);
+// }

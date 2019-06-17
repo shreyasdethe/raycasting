@@ -3,7 +3,7 @@ class Player{
 	constructor(){
 		this.pos = createVector(width / 4, height / 2);
 		this.dir = createVector(1, 0);
-		this.fov = 60;
+		this.fov = 40;
 		this.density = 0.1;
 		this.rays = [];
 
@@ -20,6 +20,11 @@ class Player{
 		var headVector = p5.Vector.add(this.pos, p5.Vector.mult(this.dir, 20));
 		// headVector.normalize();
 		line(this.pos.x, this.pos.y, (headVector.x), (headVector.y));
+
+		if(this.pos.x > width/2) this.pos.x = width/2;
+		if(this.pos.x < 0) this.pos.x = 0;
+		if(this.pos.y > height) this.pos.y = height;
+		if(this.pos.y < 0) this.pos.y = 0;
 	}
 
 	look(walls){
@@ -53,8 +58,8 @@ class Player{
 				rectMode(CENTER);
 				var rectSide = (width/2) / this.rays.length;
 
-				var brightness = map(p5.Vector.dist(closest, this.pos), 0, 500, 255, 0);
-				var rectHeight = map(p5.Vector.dist(closest, this.pos), 0, 500, height, 0);
+				var brightness = map(p5.Vector.dist(closest, this.pos), 0, height, 255, 0);
+				var rectHeight = map(p5.Vector.dist(closest, this.pos), 0, height, height, 0);
 				stroke(brightness);
 				fill(brightness);
 				rect(width/2 + (itr+1)*rectSide, height/2, 2*rectSide, rectHeight);

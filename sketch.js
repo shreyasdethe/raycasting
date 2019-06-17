@@ -4,9 +4,15 @@ function setup(){
 	player = new Player();
 	boundary = new Array(5);
 
-	for(var i = 0; i < 5; i++){
-		boundary[i] = new Boundary(random(width/2), random(height), random(width/2), random(height));
-	}	
+	// for(var i = 0; i < 5; i++){
+	// 	boundary[i] = new Boundary(random(width/2), random(height), random(width/2), random(height));
+	// }
+
+	boundary[0] = new Boundary(100, 100, 100, 500);
+	boundary[1] = new Boundary(100, 500, 500, 500);
+	boundary[2] = new Boundary(500, 500, 500, 300);
+	boundary[3] = new Boundary(500, 300, 200, 200);
+	boundary[4] = new Boundary(200, 200,  50, 200);
 }
 
 function draw(){

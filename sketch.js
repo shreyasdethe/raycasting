@@ -20,6 +20,7 @@ function draw(){
 		boundary[i].show();
 	}
 	player.look(boundary);
+	player.setDirection(mouseX, mouseY);
 
 	// if (keyIsDown(DOWN_ARROW)) player.rotate(20);
 	// else if (keyIsDown(UP_ARROW)) player.rotate(-20);

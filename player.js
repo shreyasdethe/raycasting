@@ -31,12 +31,12 @@ class Player{
 						record = dist;
 						closest = pt;
 					}
-				}
-				
-				if(closest){
-					stroke(random(200, 255));
-					line(this.pos.x, this.pos.y, closest.x, closest.y);
-				}
+				}	
+			}
+
+			if(closest){
+				stroke(random(200, 255));
+				line(this.pos.x, this.pos.y, closest.x, closest.y);
 			}
 		}
 	}
@@ -45,16 +45,22 @@ class Player{
 	setDirection(x, y){
 		this.dir.x = x - this.pos.x;
 		this.dir.y = y - this.pos.y;
-		// this.dir.normalize();
+		this.dir.normalize();
+		console.log(degrees(this.dir.heading()));
+		var j = 0;
+		for(var i = degrees(this.dir.heading()) - this.fov/2; i < degrees(this.dir.heading()) + this.fov/2; i += 5){
+			this.rays[j] = new Ray(this.pos, i);
+			j++;
+		}
 	}
 
 	rotate(val){
 		var newAngle = this.dir.heading() + degrees(val);
-		this.dir = p5.Vector.fromAngle(newAngle);
+		this.dir = p5.Vector.fromAngle(radians(newAngle));
 
 		var j = 0;
 		for(var i = degrees(this.dir.heading()) - this.fov/2; i < degrees(this.dir.heading()) + this.fov/2; i += 5){
-			this.rays[j] = new Ray(this.pos, radians(i));
+			this.rays[j] = new Ray(this.pos, i);
 			j++;
 		}
 		console.log(this.dir.heading());

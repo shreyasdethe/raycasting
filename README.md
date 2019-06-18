@@ -10,6 +10,7 @@ Raycasting is a rendering technique to create a 3D perspective in a 2D map. Back
 ## Todo
 - [X] Populate directory with source files.
 - [ ] Create slider for field of view (`player.fov`)
+- [ ] Load map from file
 - [ ] CSS
 - [ ] Embed in blog
 - [ ] Full description of raycasting and code.

@@ -3,7 +3,7 @@ class Player{
 	constructor(){
 		this.pos = createVector(width / 4, height / 2);
 		this.dir = createVector(1, 0);
-		this.fov = 40;
+		this.fov = 30;
 		this.density = 0.1;
 		this.rays = [];
 
